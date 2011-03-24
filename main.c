@@ -13,7 +13,7 @@
 #define SMOOTHING_FACTOR 3
 #define SMOOTHING_N (1<<SMOOTHING_FACTOR)
 
-//#define _DEBUG
+//#define DEBUG
 
 char version[] = "1.0.0";
 
@@ -69,8 +69,8 @@ void main(void)
 	TRISC7 = 1; // rx port as input
 	
 	// baud rate = 20,000,000/(64 * (SPBRG + 1))
-    SPBRG = 7; // baud = 39062 (~ 38400)
-    BRGH = 0; // low-speed
+	SPBRG = 7; // baud = 39062 (~ 38400)
+	BRGH = 0; // low-speed
     
 	SYNC = 0; // asynchronous
 	SPEN = 1; // enable serial port
@@ -100,7 +100,7 @@ void main(void)
 		val += prevVal[i];
 	}
 
-#ifndef _DEBUG
+#ifndef DEBUG
 	while(1)
 	{
 		val -= prevVal[prevValIdx]; // subtract oldest reading
